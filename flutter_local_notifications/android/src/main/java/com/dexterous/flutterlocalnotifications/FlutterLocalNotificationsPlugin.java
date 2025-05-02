@@ -1046,18 +1046,18 @@ public class FlutterLocalNotificationsPlugin
               : bigPictureStyleInformation.summaryText;
       bigPictureStyle.setSummaryText(summaryText);
     }
+if (bigPictureStyleInformation.hideExpandedLargeIcon) {
+  bigPictureStyle.bigLargeIcon((Bitmap) null); // ✅ تم حل التعارض هنا
+} else {
+  if (bigPictureStyleInformation.largeIcon != null) {
+    bigPictureStyle.bigLargeIcon(
+        getBitmapFromSource(
+            context,
+            bigPictureStyleInformation.largeIcon,
+            bigPictureStyleInformation.largeIconBitmapSource));
+  }
+}
 
-    if (bigPictureStyleInformation.hideExpandedLargeIcon) {
-      bigPictureStyle.bigLargeIcon((Bitmap) null);
-    } else {
-      if (bigPictureStyleInformation.largeIcon != null) {
-        bigPictureStyle.bigLargeIcon(
-            getBitmapFromSource(
-                context,
-                bigPictureStyleInformation.largeIcon,
-                bigPictureStyleInformation.largeIconBitmapSource));
-      }
-    }
     bigPictureStyle.bigPicture(
         getBitmapFromSource(
             context,
